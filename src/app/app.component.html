@@ -1,0 +1,15 @@
+<div *ngIf="appRunning">
+  <app-header></app-header>
+  <br />
+  <app-error></app-error>
+  <br />
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="!appRunning">
+  <app-header></app-header>
+  <br />
+  <div class="container">
+    <h1>{{ outageMessage }}</h1>
+  </div>
+</div>

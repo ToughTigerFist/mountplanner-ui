@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="charName">Character Name</label>
+          <input type="text" [(ngModel)]="userName" class="form-control" id="charName" placeholder="Enter character name">
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="serverName">Server Name</label>
+        <input *ngIf="serverList" type="text" id="serverName" class="form-control" [ngModel]="serverName" (ngModelChange)="getSlugName($event)" [ngbTypeahead]="search" [editable]='false' placeholder="Enter server name"/><br /><br />
+      </div>
+    </div>
+    <button [disabled]="!userName || !slugServerName" type="button" class="btn btn-primary" (click)="goToResults()">Get Mounts</button>
+  <br>
+  </div>

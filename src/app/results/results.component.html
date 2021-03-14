@@ -1,0 +1,28 @@
+<div *ngIf="profile" class="container">
+  <h1>{{ profile.name }} - {{ profile.realmName }}</h1>
+  <h5>
+    Level {{ profile.level }} {{ profile.active_spec }}
+    {{ profile.character_class }}
+  </h5>
+  <h5>&lt;{{ profile.guild }}&gt;</h5>
+  <br>
+  <div class="progress">
+    <div
+      class="progress-bar bg-success"
+      role="progressbar"
+      [style.width.%]="collectedPct"
+      [aria-valuenow]="collectedPct"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      {{ (profile.mounts.length / totalMounts) * 100 | number: "1.0-0" }}%
+    </div>
+  </div>
+  <br>
+  <div class="row">
+      <h3>Classic</h3>
+  </div>
+  <span  *ngFor="let m of profile.mounts">
+      <a href="#" *ngIf="m.id < 124"[attr.id]="m.name" [attr.data-wowhead]="getWowheadId(m)">{{m.name}}</a>
+  </span>
+</div>
